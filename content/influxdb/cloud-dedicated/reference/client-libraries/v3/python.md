@@ -16,13 +16,15 @@ related:
   - /influxdb/cloud-dedicated/query-data/execute-queries/troubleshoot/
 list_code_example: >
   
-  #### Example: Writing and querying data
-  
-  The following example demonstrates how to write sensor data into influxDB and retrieve data from the last 90 days for analysis. 
-
   ```python
+  Example: Writing and querying data
   
-  # Write sensor data in batches from a CSV file.
+  # The following example demonstrates how to write sensor data into influxDB 
+  
+  # and retrieve data from the last 90 days for analysis. 
+
+  
+  # Write sensor data in batches from a CSV file
     client.write_file(file='./data/home-sensor-data.csv', timestamp_column='time',
                       tag_columns=["room"])
 
@@ -32,8 +34,12 @@ list_code_example: >
          FROM home
          WHERE time >= now() - INTERVAL '90 days'
          ORDER BY time''')
+    
+    # This script assumes the client object is correctly configured with your database name, token, and host URL. 
+    # After the script runs, the table variable contains the data formatted as a PyArrow table.
+
     ```
-    This script assumes the client object is correctly configured with your database name, token, and host URL. After running the query, table will contain the queried data formatted as a PyArrow table.
+    
 ---
 
 The InfluxDB v3 [`influxdb3-python` Python client library](https://github.com/InfluxCommunity/influxdb3-python)
@@ -98,11 +104,11 @@ Import specific class methods from the module:
 from influxdb_client_3 import InfluxDBClient3, Point, WriteOptions
 ```
 
-- [`influxdb_client_3.InfluxDBClient3`](#class-influxdbclient3): a class for interacting with InfluxDB.
-- [`influxdb_client_3.Point`](#class-point): a class for constructing time a series data
-  point.
+- [`influxdb_client_3.InfluxDBClient3`](#class-influxdbclient3): a class for interacting with InfluxDB
+- [`influxdb_client_3.Point`](#class-point): a class for constructing a time series data
+  point
 - `influxdb_client_3.WriteOptions`: a class for configuring client
-  write options.
+  write options
 
 ## API reference
 
